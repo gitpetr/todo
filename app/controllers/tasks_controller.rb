@@ -11,15 +11,15 @@ class TasksController < ApplicationController
     #redirect_to project_path(@task.project)
   end
   
-  # def destroy
-  #     @task = Task.find(params[:id])
-  #     @task.destroy
-  #     respond_to do |format|
-  #        format.js { layout: false }
-  #     end
+  def destroy
+      @task = Task.find(params[:id])
+      @task.destroy
+      # respond_to do |format|
+      #    format.js { layout: false }
+      # end
       
-    #redirect_to project_path(@task.project)
-
+      redirect_to project_path(@task.project)
+    end
   private
 
   def task_params
