@@ -1,0 +1,9 @@
+<% if @task.errors.present? %>
+  <% @task.errors.full_messages.each do |message|  %>
+    $('.task-errors').html('<%= j message %>')
+  <% end %>
+<% else %>
+$('.tasks').html('<%= j render 'projects/tasks' %>');
+$('#task_title').val('');
+
+<% end %> 

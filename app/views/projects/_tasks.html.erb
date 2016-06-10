@@ -1,0 +1,28 @@
+ <% @project.tasks.each do |task| %>
+    <% if task.persisted? %>
+
+     <div class="task priority_<%= task.priority %> completed_<%= task.completed %> buffer-top">
+      <span class="title"><%= task.title %></span> 
+     
+ 
+      <%# if user_signed_in? %>
+          <%= link_to  content_tag('span', '', class: 'fa fa-pencil'), '', class: 'edit-task-link action', data: {task_id: task.id} %>
+          <%= link_to  content_tag('span', '', class: 'fa fa-trash'), project_task_path(@project, task), method: :delete, remote: true, class: 'delete-task-link action', data: {task_id: task.id} %>
+          <%= link_to  content_tag('span', '', class: 'fa fa-check-square-o'), '', data: {task_id: task.id}, class: 'action done' %>
+      <%# end %>
+      </p>
+      
+   </div>
+
+      <%= form_for [@project, task], remote: true, html: {id: "edit-task-#{task.id}"} do |f| %>
+                <%= f.label :title, "Изменить задачу" %>
+                <%= f.text_field :title %>
+                <%= f.select :priority, Task::PRIORITIES %>
+                <%= f.submit 'Сохранить'  %>
+               
+        <% end %>
+      <% end %>
+        
+ 
+   <hr> 
+  <% end %>

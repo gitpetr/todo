@@ -1,0 +1,13 @@
+<% if @task.errors.present? %>
+  <% @task.errors.full_messages.each do |message|  %>
+    $('.task-errors').html('<%= j message %>')
+  <% end %>
+<% else %>
+  $('.tasks').html('<%= j render 'projects/tasks' %>');
+  $('.edit-task-link').click(function(e) {
+    e.preventDefault();
+    $(this).hide();
+    task_id = $(this).data('taskId');
+    $('form#edit-task-' + task_id).show();
+});
+<% end %>

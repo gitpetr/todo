@@ -1,0 +1,5 @@
+$('.tasks').html('<%= j render 'projects/tasks' %>');
+<% if @task.destroyed? %>
+  $('#delete-task-' +<%= @task.id %>).hide();
+<% end %>
+
