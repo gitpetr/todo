@@ -1,20 +1,16 @@
  <% @project.tasks.each do |task| %>
     <% if task.persisted? %>
-
+  
+     
      <div class="task priority_<%= task.priority %> completed_<%= task.completed %> buffer-top" id="delete-task-<%=task.id %>">
       <span class="title"><%= task.title %></span> 
-      <p><%if task.completed %>
-        <b>выполнено</b>
-        <% else %>
-        <b> не решено</b>
-        <% end %>
-      </p>
+      
      
  
       <%# if user_signed_in? %>
           <%= link_to  content_tag('span', '', class: 'fa fa-pencil'), '', class: 'edit-task-link action', data: {task_id: task.id} %>
           <%= link_to  content_tag('span', '', class: 'fa fa-trash'), project_task_path(@project, task), method: :delete, remote: true, class: 'delete-task-link action' %>
-          <%= link_to  content_tag('span', '', class: 'fa fa-check-square-o'), complete_project_task_path(@project, task), method: :patch, data: {task_id: task.id}, class: 'action done' %>
+          <%= link_to  content_tag('span', '', class: 'fa fa-check-square-o'), complete_project_task_path(@project, task), method: :patch, remote: true, data: {task_id: task.id}, class: 'action done' %>
       <%# end %>
       
       

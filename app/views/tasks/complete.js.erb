@@ -1,0 +1,4 @@
+<% if @task.completed %>
+  $('#delete-task-' +<%= @task.id %>).css('color', '#ccc').css('textDecoration', 'line-through');
+<% end %>
+

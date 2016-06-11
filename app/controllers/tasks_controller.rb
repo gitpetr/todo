@@ -24,7 +24,7 @@ class TasksController < ApplicationController
     def complete
       @task = Task.find(params[:id])
       @task.complete!
-      redirect_to project_path(@task.project)
+      #redirect_to project_path(@task.project)
     end
   private
 
