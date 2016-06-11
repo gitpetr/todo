@@ -20,9 +20,15 @@ class TasksController < ApplicationController
       
       #redirect_to project_path(@task.project)
     end
+
+    def complete
+      @task = Task.find(params[:id])
+      @task.complete!
+      redirect_to project_path(@task.project)
+    end
   private
 
   def task_params
-    params.require(:task).permit(:title, :priority)
+    params.require(:task).permit(:title, :priority, :completed)
   end
   end
