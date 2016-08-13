@@ -46,3 +46,4 @@ group :development do
 end
 gem 'slim-rails'
 gem 'twitter-bootstrap-rails'
+gem 'devise'

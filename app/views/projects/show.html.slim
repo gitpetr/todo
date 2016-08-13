@@ -1,26 +1,31 @@
-p#notice=notice
-.col-md-12.buffer-top
-  p
-    strong
-      Проект №
-      = @project.number
-  h1= @project.name
+- model_class = Project
+.page-header
+  h1=t '.title', :default => model_class.model_name.human.titleize
 
-  p
-    strong Задачи:
-  .tasks
-    = render 'tasks'
+p
+  strong= model_class.human_attribute_name(:number) + ':'
+  br
+  = @project.number
+p
+  strong= model_class.human_attribute_name(:name) + ':'
+  br
+  = @project.name
 
-  .task-errors
+p
+  strong Задачи:
+.tasks
+  = render 'tasks'
 
-  = form_for [@project, @task], remote: true do |f|
-    p= f.label :title, 'Новая задача'
-    p= f.text_field :title
-    p= f.select :priority, Task::PRIORITIES
-    p= f.submit 'Создать' , class: 'btn btn-primary'
+.task-errors
 
-  p= link_to 'Проекты', projects_path, class: 'btn btn-primary'
+= form_for [@project, @task], remote: true do |f|
+  p= f.label :title, 'Новая задача'
+  p= f.text_field :title
+  p= f.select :priority, Task::PRIORITIES
+  p= f.submit 'Создать' , class: 'btn btn-primary'
 
-
- 
-  
+= link_to t('.back', :default => t("helpers.links.back")), projects_path, :class => 'btn btn-default'
+'
+= link_to t('.edit', :default => t("helpers.links.edit")), edit_project_path(@project), :class => 'btn btn-default'
+'
+= link_to t('.destroy', :default => t("helpers.links.destroy")), project_path(@project), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
