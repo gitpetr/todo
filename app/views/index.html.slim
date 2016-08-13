@@ -1,0 +1,8 @@
+= link_to "Задачи: #{ current_user.email if current_user }", projects_path, class: "navbar-brand"
+.div class="navbar-collapse collapse navbar-responsive-collapse"
+  ul class="nav navbar-nav"
+    - if user_signed_in?
+      li= link_to "Выйти", destroy_user_session_path, method: :delete
+    - else
+      li= link_to "Войти", new_user_session_path
+      li= link_to "Зарегистрироваться", new_user_registration_path

@@ -17,9 +17,9 @@ p#notice=notice
     p= f.label :title, 'Новая задача'
     p= f.text_field :title
     p= f.select :priority, Task::PRIORITIES
-    p= f.submit 'Создать' 
+    p= f.submit 'Создать' , class: 'btn btn-primary'
 
-  p= link_to 'Back', projects_path
+  p= link_to 'Проекты', projects_path, class: 'btn btn-primary'
 
 
  

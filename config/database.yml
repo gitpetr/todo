@@ -20,12 +20,14 @@ default: &default
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
+  host: localhost
+  username: best
+  password: best
 
 development:
   <<: *default
   database: todo_development
-  username: todo
-  password: 'c-1965'
+   
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -80,8 +82,8 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: todo_production
-  username: todo
-  password: <%= ENV['TODO_DATABASE_PASSWORD'] %>
+# production:
+#   <<: *default
+#   database: todo_production
+#   username: todo
+#   password: <%= ENV['TODO_DATABASE_PASSWORD'] %>

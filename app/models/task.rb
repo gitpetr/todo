@@ -11,4 +11,6 @@ class Task < ActiveRecord::Base
     self.completed = true
     save
   end
+
+  
 end
