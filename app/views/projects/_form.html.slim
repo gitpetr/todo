@@ -1,16 +1,16 @@
 = form_for @project, html: { class: "form form-horizontal project" } do |f|
   .form-group
-    = f.label :number, :class => 'control-label col-lg-2'
+    = f.label 'Номер', :class => 'control-label col-lg-2'
     .col-lg-10
-      = f.text_field :number, :class => 'form-control'
+      = f.text_field :number, :class => 'form-control', placeholder: 'только цифры'
      
   .form-group
-    = f.label :name, :class => 'control-label col-lg-2'
+    = f.label  'Название', :class => 'control-label col-lg-2'
     .col-lg-10
       = f.text_field :name, :class => 'form-control'
      
   .form-group
     .col-lg-offset-2.col-lg-10
-      = f.submit nil, :class => 'btn btn-primary'
+      = f.submit nil, :class => 'btn btn-primary', value: 'OK'
       '
-      = link_to t('.cancel', :default => t("helpers.links.cancel")), projects_path, :class => 'btn'
+      span.btn.btn-default= link_to  'Отменить', projects_path 
