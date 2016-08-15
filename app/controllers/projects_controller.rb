@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
 
   def new
     #@project = Project.new
-    @project = current_user.projects.build 
+    @project = current_user.projects.build
   end
 
   def edit

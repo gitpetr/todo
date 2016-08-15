@@ -48,3 +48,5 @@ gem 'slim-rails'
 gem 'twitter-bootstrap-rails'
 gem 'devise'
 gem 'rails_12factor'
+gem 'russian'
+ 
