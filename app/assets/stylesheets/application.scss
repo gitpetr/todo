@@ -13,7 +13,32 @@
  *= require_tree .
  *= require_self
  */
-body {font-size: 1.75em}
+body {
+  font-size: 1.75em;
+  background: #E9E9E9;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 100;
+  color: #529ECC;
+  font-weight: bold;
+  text-align: center;
+}
+
+.navbar {
+   
+  background: #529ECC;
+
+  .navbar-brand {
+    a {
+      color: #FFFFFF;
+      font-weight: bold;
+      font-size: 1.6em;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
 
 .buffer-top {
   margin-top: 2em;

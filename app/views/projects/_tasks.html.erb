@@ -1,4 +1,4 @@
- <% @project.tasks.order('priority DESC').each do |task| %>
+ <% @project.tasks.order('completed DESC').order('priority DESC').each do |task| %>
     <% if task.persisted? %>
   
      
@@ -19,6 +19,7 @@
       <%= form_for [@project, task], remote: true, html: {id: "edit-task-#{task.id}"} do |f| %>
                 <%= f.label :title, "Изменить задачу" %>
                 <%= f.text_field :title %>
+                <%= f.label :priority %>
                 <%= f.select :priority, Task::PRIORITIES %>
                 <%= f.submit 'Сохранить'  %>
                

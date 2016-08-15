@@ -14,7 +14,9 @@
         tr
           td= project.number
           td= link_to project.name, project_path(project)
-          td= time_ago_in_words(project.created_at)
+          td
+            =' time_ago_in_words(project.created_at)
+            ' назад 
           td
             = link_to 'изменить' , edit_project_path(project), :class => 'btn btn-default btn-xs'
             '

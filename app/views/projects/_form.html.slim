@@ -1,4 +1,12 @@
 = form_for @project, html: { class: "form form-horizontal project" } do |f|
+  - if @project.errors.any?
+    #errors
+      h2
+      = pluralize(@project.errors.count, "error")
+      prevented this Project from saving
+      ul
+        - @project.errors.full_messages.each do |msg|
+          li= msg
   .form-group
     = f.label 'Номер', :class => 'control-label col-lg-2'
     .col-lg-10
