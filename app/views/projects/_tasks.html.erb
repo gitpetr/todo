@@ -1,3 +1,5 @@
+  <% if user_signed_in? %>
+  <% if @project.user_id == current_user.id %>
  <% @project.tasks.order('completed DESC').order('priority DESC').each do |task| %>
     <% if task.persisted? %>
   
@@ -7,11 +9,11 @@
       
      
  
-      <%# if user_signed_in? %>
+     
           <%= link_to  content_tag('span', '', class: 'fa fa-pencil'), '', class: 'edit-task-link action', data: {task_id: task.id} %>
           <%= link_to  content_tag('span', '', class: 'fa fa-trash'), project_task_path(@project, task), method: :delete, remote: true, class: 'delete-task-link action' %>
           <%= link_to  content_tag('span', '', class: 'fa fa-check-square-o'), complete_project_task_path(@project, task), method: :patch, remote: true, data: {task_id: task.id}, class: 'action done' %>
-      <%# end %>
+    
       
       
    </div>
@@ -29,3 +31,7 @@
  
    <hr> 
   <% end %>
+
+    <% end %>
+      <% end %>
+ 

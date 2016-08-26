@@ -9,15 +9,18 @@
 
 p
   strong Задачи:
+.task-errors
 .tasks
   = render 'tasks'
 
-.task-errors
 
-= form_for [@project, @task], remote: true do |f|
-  p= f.label :title, 'Новая задача'
-  p= f.text_field :title
-  p= f.select :priority, Task::PRIORITIES
-  p= f.submit 'Создать' , class: 'btn btn-primary'
+- if @project.user_id == current_user.id
+  = form_for [@project, @task], remote: true do |f|
+    p= f.label :title, 'Новая задача'
+    p= f.text_field :title
+    p= f.select :priority, Task::PRIORITIES
+    p= f.submit 'Создать' , class: 'btn btn-primary'
+- else
+  = render 'x_page'
 
  

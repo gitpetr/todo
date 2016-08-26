@@ -11,17 +11,19 @@
         th 
     tbody
       - @projects.each do |project|
-        tr
-          td= project.number
-          td= link_to project.name, project_path(project)
-          td
-            =' time_ago_in_words(project.created_at)
-            ' назад 
-          td
-            = link_to 'изменить' , edit_project_path(project), :class => 'btn btn-default btn-xs'
-            '
-            = link_to 'удалить', project_path(project), :method => :delete, :data => { :confirm =>  'Удалить безвозвратно?' }, :class => 'btn btn-xs btn-danger'
-
+        -if project.user_id == current_user.id
+          tr
+            td= project.number
+            td= link_to project.name, project_path(project)
+            td
+              =' time_ago_in_words(project.created_at)
+              ' назад 
+            td
+              = link_to 'изменить' , edit_project_path(project), :class => 'btn btn-default btn-xs'
+              '
+              = link_to 'удалить', project_path(project), :method => :delete, :data => { :confirm =>  'Удалить безвозвратно?' }, :class => 'btn btn-xs btn-danger'
+        - else
+          = render 'welcome_page'
  
 - else
   = render 'welcome_page'

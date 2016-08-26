@@ -6,7 +6,7 @@
   $('.tasks').html('<%= j render 'projects/tasks' %>');
   $('.edit-task-link').click(function(e) {
     e.preventDefault();
-    $(this).hide();
+    //$(this).hide();
     task_id = $(this).data('taskId');
     $('form#edit-task-' + task_id).show();
 });
